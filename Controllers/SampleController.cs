@@ -12,18 +12,18 @@ namespace DanskeIT.DotNetCore.Demo2.Controllers
     [ApiController]
     public class SampleController : ControllerBase
     {
-        private readonly Book _book;
+        private readonly IStore _store;
 
-        public SampleController(Book book)
+        public SampleController(IStore store, IBook book)
         {
-            _book = book;
             Console.WriteLine("creating the controller");
+            _store = store;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(new {Message = this._book.GetTitle()});
+            return Ok(new {Message = this._store.GetInfo()});
         }
     }
 }

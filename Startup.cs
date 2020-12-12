@@ -18,7 +18,10 @@ namespace DanskeIT.DotNetCore.Demo2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<Book>();
+            services.AddSingleton<IBook, Book>();   //  Whenever asked for
+            services.AddSingleton<IStore, Store>();   //  Whenever asked for
+            //services.AddScoped<IBook, Book>();    //  For one Request process cycle
+            //services.AddSingleton<IBook, Book>(); //  Once for the entire application
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

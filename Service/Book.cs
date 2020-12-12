@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DanskeIT.DotNetCore.Demo2.Service
 {
-    public class Book
+    public class Book : IBook
     {
         private readonly string _title = "Programming C#";
         public Book()
