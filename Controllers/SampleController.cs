@@ -13,17 +13,24 @@ namespace DanskeIT.DotNetCore.Demo2.Controllers
     public class SampleController : ControllerBase
     {
         private readonly IStore _store;
+        private readonly IEnumerable<IStore> _stores;
 
-        public SampleController(IStore store, IBook book)
+        public SampleController(IStore store, IBook book, IEnumerable<IStore> stores)
         {
             Console.WriteLine("creating the controller");
             _store = store;
+            _stores = stores;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(new {Message = this._store.GetInfo()});
+            return Ok(
+                new
+                {
+                    Message = $"We got: {_stores.Count()} stores", 
+                    CurrentStore = $"{_store.GetInfo()}"
+                });
         }
     }
 }

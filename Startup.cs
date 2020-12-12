@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DanskeIT.DotNetCore.Demo2.Service;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DanskeIT.DotNetCore.Demo2
 {
@@ -19,6 +20,8 @@ namespace DanskeIT.DotNetCore.Demo2
         {
             services.AddControllers();
             services.AddSingleton<IBook, Book>();   //  Whenever asked for
+            services.AddSingleton<IStore, Store>();   //  Whenever asked for
+            services.AddSingleton<IStore, Store>();   //  Whenever asked for
             services.AddSingleton<IStore, Store>();   //  Whenever asked for
             //services.AddScoped<IBook, Book>();    //  For one Request process cycle
             //services.AddSingleton<IBook, Book>(); //  Once for the entire application
